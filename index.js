@@ -234,6 +234,10 @@ async function run() {
       process.env.KUBECONFIG = "./kubeconfig.yml";
       await writeFile(process.env.KUBECONFIG, process.env.KUBECONFIG_FILE);
     }
+    if (process.env.KUBECONFIG_SERVICE_ACC_VAR) {
+      process.env.KUBECONFIG = "./service-account.json";
+      await writeFile(process.env.KUBECONFIG_SERVICE_ACC_VAR, process.env.KUBECONFIG_SERVICE_ACC_VAR);
+    }
     await writeFile("./values.yml", values);
 
     core.debug(`env: KUBECONFIG="${process.env.KUBECONFIG}"`);
